@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/collection"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Collection"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_baseline_transit_enterexit_24"
+        android:title="sign out"
+        app:showAsAction="ifRoom" />
+
+
+</menu>
