@@ -11,8 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileActivity"></activity>
         <activity android:name=".views.RecipiesController"></activity>
+        <activity android:name=".views.SavedRecipiesController"></activity>
 
         <activity android:name=".views.AuthentificationController">
             <intent-filter>

@@ -1,15 +1,13 @@
 package com.example.mvvm.views;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,32 +19,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mvvm.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.List;
-
 import adapters.RecipeListAdapter;
-import localDataSrc.Notes;
-import remoteDataSource.Recipe;
 import remoteDataSource.RecipeResponse;
 import viewModels.ViewModelActivity;
 
-public class RecipiesController extends AppCompatActivity
-{
-    TextView name, mail;
+public class RecipiesController extends AppCompatActivity {
     MenuItem logout;
     Button getRecipies;
-    TextView textViewRecipies;
     ViewModelActivity viewModelActivity;
     RecipeListAdapter recipeListAdapter;
     RecyclerView recipeList;
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.collection:
-                //DO SOMETHING//todo show local dbs
+                Intent intentSavedRecipies = new Intent(getApplicationContext(), SavedRecipiesController.class);
+                startActivity(intentSavedRecipies);
                 return true;
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
@@ -57,7 +50,6 @@ public class RecipiesController extends AppCompatActivity
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 
     @Override
@@ -72,10 +64,10 @@ public class RecipiesController extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.menu);
         setSupportActionBar(toolbar);
         logout = findViewById(R.id.logout);
-        name = findViewById(R.id.name);
-        mail = findViewById(R.id.email);
 
-
+        Bundle bundle = getIntent().getExtras();
+//        userPhoto = findViewById(R.id.userPhoto);//todo display ohoto of the user
+        Toast.makeText(this, getString(R.string.welcomeToast) + " " + bundle.getString("name"), Toast.LENGTH_SHORT).show();
 
 
         //observing live list data for notes
@@ -83,63 +75,20 @@ public class RecipiesController extends AppCompatActivity
 
             @Override
             public void onChanged(RecipeResponse recipeResponse) {
-                Log.i("recipeResponse",recipeResponse.getResults().toString());
-                recipeListAdapter = new RecipeListAdapter(recipeResponse.getResults());
+                Log.i("recipeResponse", recipeResponse.getResults().toString());
+                recipeListAdapter = new RecipeListAdapter(recipeResponse.getResults(), getApplication());
                 recipeList.setAdapter(recipeListAdapter);
-//                textViewRecipies.setText("");
-//                for (Recipe recipe : recipeResponse.getResults()) {
-//                    textViewRecipies.append(recipe + "\n");
-//                }
             }
         });
-
-
-
-
 
 
     }
 
 
+    public void getRecipies(View view) {
 
-        public void getRecipies(View view)
-        {
-            viewModelActivity.getRecipes();
-        }
-
-//    @Override
-//    protected void onPause () {
-//        super.onPause();
-//        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = preferences.edit();
-//        editor.putString("name", textViewNotes.getText().toString());
-//        editor.apply();
-//    }
-//
-//    @Override
-//    protected void onResume () {
-//        super.onResume();
-//        SharedPreferences preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
-//        String name = preferences.getString("name", "default name");
-//        textViewNotes.setText(name);
-//    }
-//
-//    public void addNote(View view)
-//    {
-//        viewModelActivity.addNote(editText.getText().toString());
-//    }
-//
-//    public void deleteAll(View view)
-//    {
-//        viewModelActivity.deleteAllNotes();
-//    }
-
-
-
-
-
-
-
+        viewModelActivity.getRecipes();
+    }
 
 
 }

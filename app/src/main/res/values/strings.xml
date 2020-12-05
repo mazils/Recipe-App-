@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MVVM</string>
+
+    <string name="loginText">Please log in using Google Account</string>
+    <string name="toastAuthFailmsg">Authentification failed</string>
+    <string name="welcomeToast">Welcome</string>
+    <string name="Added">added</string>
+    <string name="SaveRecipies">My recipies</string>
+    <string name="getNewestRecipies">get recipies</string>
+
+
 </resources>

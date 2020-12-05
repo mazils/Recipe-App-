@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MVVM</string>
+    <string name="loginText">Log ind ved hjælp af Google-konto</string>
+    <string name="toastAuthFailmsg">Godkendelse mislykkedes</string>
+    <string name="welcomeToast">Velkommen</string>
+    <string name="Added">tilføjet</string>
+    <string name="SaveRecipies">gemte opskrifter</string>
+    <string name="getNewestRecipies">få opskrifter</string>
+
+
+</resources>

@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -28,7 +27,7 @@
         android:layout_height="wrap_content"
         android:onClick="getRecipies"
 
-        android:text="Get newest recipies now"
+        android:text="@string/getNewestRecipies"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -37,12 +36,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toTopOf="@+id/getRecipiesButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menu"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.803"
+        tools:layout_editor_absoluteX="72dp"
+        tools:listitem="@layout/recipelistitem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

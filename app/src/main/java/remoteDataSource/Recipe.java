@@ -1,9 +1,15 @@
 package remoteDataSource;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+
+@Entity(tableName = "recipies_table")
 public class Recipe {
     private String title;
     private String image;
     private String imageType;
+    @PrimaryKey
     private int id;
 
     public Recipe(String title, String image, String imageType, int id) {
@@ -50,6 +56,10 @@ public class Recipe {
 
     public void setImageType(String imageType) {
         this.imageType = imageType;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

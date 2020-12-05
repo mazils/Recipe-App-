@@ -12,22 +12,24 @@ import androidx.room.Update;
 
 import java.util.List;
 
+import remoteDataSource.Recipe;
+
 @Dao
-public interface NoteDao
+public interface RecipeDao
 {
     @Insert
-    void insert(Notes note);
+    void insert(Recipe note);
 
     @Update
-    void update(Notes note);
+    void update(Recipe note);
 
     @Delete
-    void delete(Notes note);
+    void delete(Recipe note);
 
 
 
-    @Query("SELECT * FROM note_table ")
-    LiveData<List<Notes>> getAllNotes();
+    @Query("SELECT * FROM recipies_table ")
+    LiveData<List<Recipe>> getAllRecipies();
 
 
 }
